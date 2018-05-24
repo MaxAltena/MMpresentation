@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt:700,900|Roboto:400,400i,700,700i');
+
+/*
+
+Sea blue: #3FBCED
+Tangeringe: #F18F01
+Jelly bean: #DB504A
+White smoke: #F7F7F7
+Jet: #353531
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    display: block;
+}
+
+.section:nth-child(1){
+    background-color: #353531;
+}
+
+.section:nth-child(2) .slide:nth-child(1){
+    background-color: #3FBCED;
+}
+
+.section:nth-child(2) .slide:nth-child(2){
+    background-color: #F7F7F7;
+}
+
+.section:nth-child(2) .slide:nth-child(3){
+    background-color: #3FBCED;
+}
+
+.section:nth-child(3){
+    background-color: #F18F01;
+}
+
+.section:nth-child(4){
+    background-color: #DB504A;
+}
