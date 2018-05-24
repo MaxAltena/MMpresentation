@@ -152,6 +152,7 @@ span.navLink:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .splash .topSplash {
     height: 200px;
@@ -228,9 +229,10 @@ span.navLink:active {
     top: 60%;
 }
 .regular .content {
-    width: 100vw;
+    width: 80vw;
     height: 85vh;
     color: #353531;
+    padding: 0 10vw;
 }
 .regular .content.columns {
     display: flex;
@@ -240,12 +242,6 @@ span.navLink:active {
 .regular .content.columns .column {
     height: 70vh;
     width: 20vw;
-}
-.regular .content.columns .columnL {
-    margin: 0 0 0 10vw;
-}
-.regular .content.columns .columnR {
-    margin: 0 10vw 0 0;
 }
 .regular.inverted .title h1 {
     color: #F7F7F7;
@@ -261,9 +257,10 @@ iframe.websiteLink {
     border: none;
     width: 80vw;
     height: 80vh;
-    margin: 0 10vw;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
 }
+
+
 
 .footer {
     height: 100vh;
@@ -274,7 +271,7 @@ iframe.websiteLink {
     justify-content: center;
     align-items: center;
 }
-.footerMadeOf {
+.footerMadeBy {
     padding-bottom: 4vh;
 }
 .footerH1 {
@@ -307,10 +304,42 @@ iframe.websiteLink {
     font-family: 'Hind', sans-serif;
     font-weight: 800;
     font-size: 3em;
+    text-align: center;
 }
 .footerH4 {
     color: #FFFFFF;
     font-family: 'Hind', sans-serif;
     font-weight: 800;
     font-size: 1.5em;
+    text-align: center;
+}
+
+.mobileLogo.mobile {
+    height: 150px;
+    width: 150px;
+    background-image: url("merkMM.png");
+    background-size: 150px 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.mobileNav.mobile {
+    padding: 0 7.5vw;
+}
+.mobileNav.mobile span.navLink {
+	text-align: center;
+    font-size: 2em;
+}
+.mobileWebsitePreview.mobile {
+	background-image: url("websitePreview.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 85vw;
+    min-height: 50vh;
+}
+.mobileWebsiteLink.mobile {
+	text-align: center;
+}
+.mobileWebsiteLink.mobile a.underlined {
+    color: #353531;
 }
