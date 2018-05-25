@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="mobileHTML">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="De eindpresentatie van Pa's Mooiste over Moeders Mooiste">
@@ -64,21 +64,33 @@
                     <div class="column">
                         <span class="navLink" id="1">Thuis</span>
                         <span class="navLink" id="2">Inhoud</span>
-                        <span class="navLink" id="3">Anders</span>
                     </div>
                     <div class="column">
-                        <span class="navLink" id="4">Website</span>
+                        <span class="navLink" id="3">Merkgids</span>
+                        <span class="navLink" id="4">Anders</span>
+                        <span class="navLink" id="5">Website</span>
                     </div>
                     <div class="column">
-                        <span class="navLink" id="5">Credits</span>
+                        <span class="navLink" id="6">Credits</span>
                     </div>
                 </div>
                 <div class="mobileNav mobile">
-                    <span class="navLink" id="1">Thuis</span>
-                    <span class="navLink" id="2">Inhoud</span>
-                    <span class="navLink" id="3">Anders</span>
-                    <span class="navLink" id="4">Website</span>
-                    <span class="navLink" id="5">Credits</span>
+                    <span class="navLink" id="3">Merkgids</span>
+                    <span class="navLink" id="4">Anders</span>
+                    <span class="navLink" id="5">Website</span>
+                    <span class="navLink" id="6">Credits</span>
+                </div>
+            </div>
+            <div class="section regular">
+                <div class="title">
+                    <h1>Merkgids</h1>
+                </div>
+                <div class="content">
+                    <iframe src="//e.issuu.com/embed.html#29986382/61689144" frameborder="0" allowfullscreen class="brandguideLink"></iframe>
+                    <div class="mobileBrandguidePreview mobile"></div>
+                    <div class="mobileBrandguideLink mobile">
+                        <a href="https://issuu.com/maxaltena/docs/merkgids" target="_blank" class="underlined">https://issuu.com/maxaltena/docs/merkgids</a>
+                    </div>
                 </div>
             </div>
             <div class="section regular inverted">
@@ -107,7 +119,7 @@
                     <h2 class="footerH2">Pa's Mooiste</h2>
                     <ul class="footerUl">
                         <li class="footerLi"><a href="https://MaxAltena.com/" class="underlined" target="_blank">Max Altena</a></li>
-                        <li class="footerLi"><a href="#" class="underlined adisabled" target="_blank">Dylano Hartman</a></li>
+                        <li class="footerLi"><a href="http://portfolio.DylanoHartman.com/" class="underlined" target="_blank">Dylano Hartman</a></li>
                         <li class="footerLi"><a href="#" class="underlined adisabled" target="_blank">Mark Hendriks</a></li>
                         <li class="footerLi"><a href="#" class="underlined adisabled" target="_blank">No&euml;l Herwig</a></li>
                         <li class="footerLi"><a href="#" class="underlined adisabled" target="_blank">Maarten Zuurman</a></li>
@@ -120,8 +132,8 @@
         </div>
         <script>
             $(document).ready(function(){
-                var left;
-                var bottom;
+                var left = $(".watermark").position().left;
+                var top = $(".watermark").position().top;
                 var lastIndex = $("span.navLink").last().get(0).id;
                 
                 if (device == true){
@@ -135,15 +147,15 @@
                     $(".splashH3").css({'font-size': "1.78em"});
                     $(".splashH4").css({'font-size': "0.9em"});
                     $(".nav").remove();
-                    $("span.navLink").css({'font-size': "1em"});
                     
+                    $("iframe.brandguideLink").remove();
                     $("iframe.websiteLink").remove();
                     
                     $(".footer").css({padding: "0 7.5vw"});
                     $(".content").css({padding: "0 7.5vw", width: "85vw"});
                     $(".footerH1").css({'font-size': "2em"});
                     $(".footerH2").css({'font-size': "1.875em", margin: "0"});
-                    $(".footerLi").css({'font-size': "0.875em"});
+                    $(".footerLi").css({'font-size': "1em"});
                     $(".footerH3").css({'font-size': "1.5em"});
                     $(".footerH4").css({'font-size': "0.75em"});
                     
@@ -151,7 +163,7 @@
                         lazyLoading: false,
                         verticalCentered: false,
                         scrollingSpeed: 700,
-                        sectionsColor : ["#00AEEF", "#F18F01", "#DB504A", "#F7F7F7", "#00AEEF"]
+                        sectionsColor : ["#00AEEF", "#F18F01", "#F7F7F7", "#DB504A", "#F7F7F7", "#00AEEF"]
                     });
                     
                     $("span.navLink").on("click", function(){
@@ -159,21 +171,20 @@
                     });
                 }
                 else {
+                    $(".mobileHTML").removeClass("mobileHTML");
                     $(".mobile").remove();
                     
                     $("#fullPage").fullpage({
                         lazyLoading: false,
                         verticalCentered: false,
                         scrollingSpeed: 1000,
-                        sectionsColor : ["#00AEEF", "#F18F01", "#DB504A", "#F7F7F7", "#00AEEF"],
+                        sectionsColor : ["#00AEEF", "#F18F01", "#F7F7F7", "#DB504A", "#F7F7F7", "#00AEEF"],
                         onLeave: function(index, nextIndex, direction){
                             if(index == 1 && direction =='down'){
-                                left = $(".watermark").position().left;
-                                bottom = "calc(50vh + 75px - " + $(".watermark").position().top + "px)";
-                                $(".watermark").css({left: left, bottom: bottom, position: "fixed"});
+                                $(".watermark").css({left: left, top: top, position: "fixed"});
                                 $("body").append($(".watermark"));
                                 setTimeout(function(){
-                                    $(".watermark").css({transform: "scale(0.275)", left: "-130px", bottom: "-130px"});
+                                    $(".watermark").css({transform: "scale(0.275)", left: "-130px", top: "calc(100vh - 275px)"});
                                 }, 50);
                                 setTimeout(function(){
                                     $.fn.fullpage.setScrollingSpeed(700);
@@ -181,20 +192,20 @@
                             }
                             else if(nextIndex == 1){
                                 $.fn.fullpage.setScrollingSpeed(1000);
-                                $(".watermark").css({transform: "scale(1)", left: left, bottom: bottom});
+                                $(".watermark").css({transform: "scale(1)", left: left, top: top});
                                 setTimeout(function(){
                                     $(".midSplash").append($(".watermark"));
-                                    $(".watermark").css({left: 0, bottom: 0, position: "relative"});
+                                    $(".watermark").css({left: 0, top: 0, position: "relative"});
                                 }, 950);
                             }
-
+                            
                             if(nextIndex == lastIndex){
                                 $.fn.fullpage.setScrollingSpeed(1000);
-
-                                $(".watermark").css({bottom: "calc(50% - 185px)", left: "-50px", transform: "scale(0.5)"});
+                                
+                                $(".watermark").css({top: "calc(50% - 185px)", left: "-50px", transform: "scale(0.5)"});
                             }
                             else if(index == lastIndex && direction == 'up'){
-                                $(".watermark").css({bottom: "-130px", left: "-130px", transform: "scale(0.275)"});
+                                $(".watermark").css({top: "calc(100vh - 275px)", left: "-130px", transform: "scale(0.275)"});
                                 setTimeout(function(){
                                     $.fn.fullpage.setScrollingSpeed(700);
                                 }, 1000);
