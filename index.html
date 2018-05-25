@@ -56,6 +56,68 @@
                     <h4 class="splashH4">Mee te volgen op <a href="http://presentatie.MaxAltena.com/" class="underlined">presentatie.MaxAltena.com</a></h4>
                 </div>
             </div>
+            <div id="loader-all">
+                <style>
+                    #loader-wrapper {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background: #00AEEF;
+                        z-index: 1000;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    #loader {
+                        border: 2px solid #00AEEF;
+                        border-radius: 50%;
+                        border-top: 2px solid #FFFFFF;
+                        width: 120px;
+                        height: 120px;
+                        -webkit-animation: spin 1.5s linear infinite;
+                        animation: spin 1.5s linear infinite;
+                    }
+                    @-webkit-keyframes spin {
+                        0% { 
+                            -webkit-transform: rotate(0deg); 
+                        }
+                        100% { 
+                            -webkit-transform: rotate(360deg); 
+                        }
+                    }
+                    @keyframes spin {
+                        0% { 
+                            transform: rotate(0deg); 
+                        }
+                        100% { 
+                            transform: rotate(360deg); 
+                        }
+                    }
+                    .loaded #loader-wrapper #loader {
+                        opacity: 0;
+                        transition: all 0.2s ease-out;
+                    }
+                    .loaded #loader-wrapper {
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: all 0.2s 0.3s ease-out;
+                    }
+                </style>
+                <div id="loader-wrapper"><div id="loader"></div></div>
+                <script>
+                    $(window).on("load", function() {
+                        setTimeout(function() {
+                            $("body").addClass("loaded");
+                        }, onload);
+                        setTimeout(function() {
+                            $("#loader-wrapper").hide();
+                            $("#loader-all").remove();
+                        }, onload + 550);
+                    });
+                </script>
+            </div>
             <div class="section regular inverted">
                 <div class="title">
                     <h1>Inhoud</h1>
@@ -131,7 +193,7 @@
             </div>   
         </div>
         <script>
-            $(document).ready(function(){
+            $(window).on("load", function(){
                 var left = $(".watermark").position().left;
                 var top = $(".watermark").position().top;
                 var lastIndex = $("span.navLink").last().get(0).id;
