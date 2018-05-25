@@ -44,17 +44,36 @@ a.underlined.adisabled:active {
     text-decoration: line-through;
 }
 
+.nav {
+    text-align: center;
+}
 span.navLink {
     width: auto;
     color: #F7F7F7;
     font-family: 'Hind', sans-serif;
     font-weight: 800;
-    font-size: 1.5em;
+    font-size: 2em;
     text-decoration: underline;
     cursor: pointer;
 }
 span.navLink:hover,
 span.navLink:active {
+    color: #353531;
+}
+.navDiv {
+    padding: 15px 0 30px 0;
+}
+span.navCat {
+    width: auto;
+    color: #F7F7F7;
+    font-family: 'Hind', sans-serif;
+    font-weight: 800;
+    font-size: 3em;
+    text-decoration: underline;
+    cursor: pointer;
+}
+span.navCat:hover,
+span.navCat:active {
     color: #353531;
 }
 
@@ -206,7 +225,7 @@ span.navLink:active {
 }
 .regular .title {
     width: 100vw;
-    height: 15vh;
+    height: 17.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -215,13 +234,13 @@ span.navLink:active {
     color: #353531;
     font-family: 'Prompt', sans-serif;
     font-weight: 900;
-    font-size: 3em;
+    font-size: 4em;
     margin-top: 5vh;
     text-transform: uppercase;
     text-align: center;
     position: relative;
     width: auto;
-    padding-bottom: 4vh;
+    padding-bottom: 5vh;
 }
 .regular .title h1::after {
     border-bottom: 0.2em solid #353531;
@@ -234,18 +253,9 @@ span.navLink:active {
 }
 .regular .content {
     width: 80vw;
-    height: 85vh;
+    height: 82.5vh;
     color: #353531;
     padding: 0 10vw;
-}
-.regular .content.columns {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.regular .content.columns .column {
-    height: 70vh;
-    width: 20vw;
 }
 .regular.inverted .title h1 {
     color: #F7F7F7;
@@ -330,13 +340,6 @@ iframe.websiteLink {
     background-position: center;
     background-repeat: no-repeat;
 }
-.mobileNav.mobile {
-    padding: 0 7.5vw;
-}
-.mobileNav.mobile span.navLink {
-	text-align: center;
-    font-size: 2em;
-}
 .mobileWebsitePreview.mobile {
 	background-image: url("websitePreview.jpg");
     background-position: center;
@@ -357,7 +360,6 @@ iframe.websiteLink {
 .mobileBrandguideLink.mobile {
 	text-align: center;
 }
-.mobileWebsiteLink.mobile a.underlined,
 .mobileBrandguideLink.mobile a.underlined {
     color: #353531;
 }

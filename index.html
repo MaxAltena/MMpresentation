@@ -122,25 +122,19 @@
                 <div class="title">
                     <h1>Inhoud</h1>
                 </div>
-                <div class="content columns nav">
-                    <div class="column">
-                        <span class="navLink" id="1">Thuis</span>
-                        <span class="navLink" id="2">Inhoud</span>
-                    </div>
-                    <div class="column">
-                        <span class="navLink" id="3">Merkgids</span>
-                        <span class="navLink" id="4">Anders</span>
-                        <span class="navLink" id="5">Website</span>
-                    </div>
-                    <div class="column">
-                        <span class="navLink" id="6">Credits</span>
-                    </div>
-                </div>
-                <div class="mobileNav mobile">
+                <div class="content nav">
                     <span class="navLink" id="3">Merkgids</span>
-                    <span class="navLink" id="4">Anders</span>
-                    <span class="navLink" id="5">Website</span>
-                    <span class="navLink" id="6">Credits</span>
+                    <div class="navDiv">
+                        <span class="navLink navCat" id="4">Offline middelen</span>
+                        <span class="navLink" id="5">Maskers</span>
+                        <span class="navLink" id="6">Kroegentocht</span>
+                    </div>
+                    <div class="navDiv">
+                        <span class="navLink navCat" id="7">Online middelen</span>
+                        <span class="navLink" id="8">Fotowedstrijd</span>
+                        <span class="navLink" id="9">Website</span>
+                    </div>
+                    <span class="navLink" id="10">Credits</span>
                 </div>
             </div>
             <div class="section regular">
@@ -157,13 +151,45 @@
             </div>
             <div class="section regular inverted">
                 <div class="title">
-                    <h1>Anders</h1>
+                    <h1>Offline middelen</h1>
                 </div>
                 <div class="content">
-                    <p style="text-align: center;">Dit kan het ABC zijn, dit kan een mooi plaatje zijn, dit kan niks zijn, dit kan tekst zijn, dit kan een afbeelding zijn, dit kan een iframe zijn, dit kan een video zijn, dit kan alles zijn, zolang je er maar in gelooft</p>
+
                 </div>
             </div>
-            <div class="section regular">
+            <div class="section regular inverted">
+                <div class="title">
+                    <h1>Maskers</h1>
+                </div>
+                <div class="content">
+                    
+                </div>
+            </div>
+            <div class="section regular inverted">
+                <div class="title">
+                    <h1>Kroegentocht</h1>
+                </div>
+                <div class="content">
+                    
+                </div>
+            </div>
+            <div class="section regular inverted">
+                <div class="title">
+                    <h1>Online middelen</h1>
+                </div>
+                <div class="content">
+            
+                </div>
+            </div>
+            <div class="section regular inverted">
+                <div class="title">
+                    <h1>Fotowedstrijd</h1>
+                </div>
+                <div class="content">
+
+                </div>
+            </div>
+            <div class="section regular inverted">
                 <div class="title">
                     <h1>Website</h1>
                 </div>
@@ -208,7 +234,9 @@
                     $(".bottomSplash").css({height: "150px"});
                     $(".splashH3").css({'font-size': "1.78em"});
                     $(".splashH4").css({'font-size': "0.9em"});
-                    $(".nav").remove();
+                    $("span.navLink").css({'font-size': "1.5em"});
+                    $("span.navCat").css({'font-size': "2em"});
+                    $(".title h1").css({'font-size': "2.5em"});
                     
                     $("iframe.brandguideLink").remove();
                     $("iframe.websiteLink").remove();
@@ -225,11 +253,19 @@
                         lazyLoading: false,
                         verticalCentered: false,
                         scrollingSpeed: 700,
-                        sectionsColor : ["#00AEEF", "#F18F01", "#F7F7F7", "#DB504A", "#F7F7F7", "#00AEEF"]
+                        sectionsColor : ["#00AEEF", "#F18F01", "#F7F7F7", "#3FBCED", "#3FBCED", "#3FBCED", "#DB504A", "#DB504A", "#DB504A", "#00AEEF"]
                     });
                     
                     $("span.navLink").on("click", function(){
-                        $.fn.fullpage.moveTo(this.id);
+                        var section = this.id;
+                        if(section.includes("-")){
+                            var slide = section.charAt(2);
+                            section = section.charAt(0);
+                            $.fn.fullpage.moveTo(section, slide);
+                        }
+                        else {
+                            $.fn.fullpage.moveTo(section);
+                        }
                     });
                 }
                 else {
@@ -240,9 +276,9 @@
                         lazyLoading: false,
                         verticalCentered: false,
                         scrollingSpeed: 1000,
-                        sectionsColor : ["#00AEEF", "#F18F01", "#F7F7F7", "#DB504A", "#F7F7F7", "#00AEEF"],
+                        sectionsColor : ["#00AEEF", "#F18F01", "#F7F7F7", "#3FBCED", "#3FBCED", "#3FBCED", "#DB504A", "#DB504A", "#DB504A", "#00AEEF"],
                         onLeave: function(index, nextIndex, direction){
-                            if(index == 1 && direction =='down'){
+                            if(index == 1 && direction == 'down'){
                                 $(".watermark").css({left: left, top: top, position: "fixed"});
                                 $("body").append($(".watermark"));
                                 setTimeout(function(){
@@ -273,17 +309,31 @@
                                 }, 1000);
                             }
                         }
+                        
                     });
                     
                     $("span.navLink").on("click", function(){
                         if(this.id == lastIndex){
-                            $.fn.fullpage.moveTo(lastIndex - 1);
+                            $.fn.fullpage.moveTo(lastIndex - 1, 1);
                             setTimeout(function(){
                                 $.fn.fullpage.moveSectionDown();
                             }, 700);
                         }
                         else {
-                            $.fn.fullpage.moveTo(this.id);
+                            var section = this.id;
+                            console.log(section);
+                            if(section.includes("-")){
+                                var slide = section.charAt(2);
+                                section = section.charAt(0);
+                                
+                                console.log(slide);
+                                console.log(section);
+                                $.fn.fullpage.moveTo(section, slide);
+                            }
+                            else {
+                                console.log("E");
+                                $.fn.fullpage.moveTo(section);
+                            }
                         }
                     });
                 }
